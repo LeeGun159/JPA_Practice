@@ -9,6 +9,10 @@ public class JpaMain {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
         //code
+        Member member = new Member();
+        member.setId(1L);
+        member.setName("HelloA");
+        em.persist(member);
 
         em.close();
         emf.close();
