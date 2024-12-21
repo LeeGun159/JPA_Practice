@@ -7,6 +7,7 @@ import java.util.Date;
 @Entity
 public class Member {
     @Id
+    @GeneratedValue
     private Long id;
     @Column(name = "name") //name => 필드와 매핑할 테이블의 컬럼 이름
     private String username;
