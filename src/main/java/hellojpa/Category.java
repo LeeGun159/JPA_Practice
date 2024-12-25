@@ -20,9 +20,9 @@ public class Category {
     private List<Category> child = new ArrayList<>();
 
     @ManyToMany
-    @JoinColumn(name = "CATEGORY_ITEM",
-                joinColumns = @JoinColumn(name = "CATEGORY_ID"),
-                inverseJoinColumns = @JoinColumn(name = "ITEM_ID")
+    @JoinColumn(name = "CATEGORY_ITEM"
+//            ,                joinColumns = @JoinColumn(name = "CATEGORY_ID"),
+//                inverseJoinColumns = @JoinColumn(name = "ITEM_ID")
     )
     private List<Item> items = new ArrayList<>();
-
+}
