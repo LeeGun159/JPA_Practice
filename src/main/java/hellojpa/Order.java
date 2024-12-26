@@ -12,10 +12,10 @@ public class Order {
     @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
