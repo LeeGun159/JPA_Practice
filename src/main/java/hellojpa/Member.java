@@ -15,6 +15,22 @@ public class Member  extends  BaseEntity{
     @Column(name = "name") //name => 필드와 매핑할 테이블의 컬럼 이름
     private String username;
     private Integer age;
+    //기간 Period
+    @Embedded
+    private Address homeAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city",
+            column = @Column(name = "WORK_CITY")),
+            @AttributeOverride(name = "street",
+            column = @Column(name = "WORK_STREET")),
+            @AttributeOverride(name = "zipcode",
+            column = @Column(name = "WORK_ZIPCODE"))
+
+    })
+    //주소
+    private Period workPeriod;
 
     @OneToMany(mappedBy = "member")
     private List<MemberProduct> memberProducts = new ArrayList<>();
