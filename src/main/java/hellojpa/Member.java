@@ -3,9 +3,7 @@ package hellojpa;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Member  extends  BaseEntity{
@@ -15,9 +13,29 @@ public class Member  extends  BaseEntity{
     @Column(name = "name") //name => 필드와 매핑할 테이블의 컬럼 이름
     private String username;
     private Integer age;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Embedded
+    private Address address;
     //기간 Period
     @Embedded
     private Address homeAddress;
+    @ElementCollection
+    @CollectionTable(name = "FAVORITE_FOOD" , joinColumns =
+        @JoinColumn(name = "MEMBER_ID"))
+    @Column(name = "FOOD_NAME")
+    private Set<String> favoriteFoods = new HashSet<>();
+    @ElementCollection
+    @CollectionTable(name = "ADDRESS", joinColumns =
+    @JoinColumn(name = "MEMBER_ID"))
+    private List<Address> addressHistory = new ArrayList<>();
 
     @Embedded
     @AttributeOverrides({
